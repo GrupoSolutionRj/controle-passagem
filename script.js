@@ -67,3 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000); // Remove a notificação após 3 segundos
     }
 });
+
+document.querySelectorAll('.valor').forEach(function(input) {
+    input.addEventListener('focus', function() {
+        input.setAttribute('inputmode', 'numeric');
+    });
+});
