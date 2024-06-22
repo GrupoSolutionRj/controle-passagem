@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Passagens</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Passagens</h1>
+        <div class="navigation">
+            <button id="prevDayBtn">←</button>
+            <span id="currentDate"></span>
+            <button id="nextDayBtn">→</button>
+        </div>
+        <ul id="passagemList"></ul>
+        <h3>Total Gasto: R$ <span id="totalGasto">0.00</span></h3>
+        <button id="gerarRelatorioBtn">Gerar Relatório</button>
+        <div id="relatorioContainer" style="display: none;">
+            <h2>Relatório</h2>
+            <pre id="relatorio"></pre>
+        </div>
+    </div>
+    <script src="passagens.js"></script>
+</body>
+</html>

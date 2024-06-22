@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Passagens</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Controle de Passagens</h1>
+        <form id="passagemForm">
+            <label for="partida">Partida:</label>
+            <input type="text" id="partida" required>
+            
+            <label for="destino">Destino:</label>
+            <input type="text" id="destino" required>
+            
+            <div id="passagensContainer">
+                <div class="passagem">
+                    <label for="valor">Valor da Passagem:</label>
+                    <input type="text" class="valor" required>
+                </div>
+            </div>
+            
+            <button type="button" id="addPassagemBtn">Adicionar Outra Passagem</button>
+            <button type="submit" id="adicionarPassagemBtn">Adicionar Passagem</button>
+        </form>
+        <button id="verPassagensBtn">Ver Passagens</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
