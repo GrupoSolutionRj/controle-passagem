@@ -67,26 +67,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000); // Remove a notificação após 3 segundos
     }
 });
-
-document.querySelectorAll('.valor').forEach(function(input) {
-    input.addEventListener('focus', function() {
-        input.setAttribute('inputmode', 'numeric');
-    });
-});
-
-document.querySelectorAll('.valor').forEach(function(input) {
-    input.addEventListener('input', function() {
-        let valor = input.value.replace(/\D/g, ''); // Remove todos os caracteres não-dígitos
-        valor = valor.replace(/^0+/, ''); // Remove zeros à esquerda
-        
-        if (valor.length === 0) {
-            input.value = '';
-        } else if (valor.length <= 2) {
-            input.value = `0,${valor}`; // Formato inicial para até dois dígitos
-        } else {
-            const integerPart = valor.slice(0, -2);
-            const decimalPart = valor.slice(-2);
-            input.value = `${integerPart},${decimalPart}`;
-        }
-    });
-});
