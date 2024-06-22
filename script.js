@@ -18,23 +18,24 @@ document.addEventListener('DOMContentLoaded', function() {
         const passagens = document.querySelectorAll('.passagem');
         let totalGasto = 0;
         let detalhesPassagens = '';
-
+    
         passagens.forEach(function(passagem, index) {
-            const valor = parseFloat(passagem.querySelector('.valor').value.replace(',', '.'));
-
+            const valorStr = passagem.querySelector('.valor').value.trim(); // Obtém o valor como string
+            const valor = parseFloat(valorStr.replace(',', '.')); // Substitui ',' por '.' e converte para float
+            
             if (!isNaN(valor)) {
                 totalGasto += valor;
                 detalhesPassagens += `R$ ${valor.toFixed(2).replace('.', ',')} `;
             }
         });
-
+    
         if (partida && destino && detalhesPassagens) {
             const data = new Date().toLocaleDateString('pt-BR');
             const passagemList = JSON.parse(localStorage.getItem('passagemList')) || [];
             passagemList.push(`${data} - ${partida} -> ${destino} (${detalhesPassagens.trim()})`);
             localStorage.setItem('passagemList', JSON.stringify(passagemList));
             localStorage.setItem('totalGasto', (parseFloat(localStorage.getItem('totalGasto') || '0') + totalGasto).toFixed(2).replace('.', ','));
-
+    
             document.getElementById('passagemForm').reset();
             document.getElementById('passagensContainer').innerHTML = `
                 <div class="passagem">
@@ -42,13 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     <input type="text" class="valor" required>
                 </div>
             `;
-
-            // Feedback visual com mensagem flutuante
+    
             showNotification('Passagem adicionada com sucesso!', 'success');
         } else {
-            showNotification('Por favor, preencha todos os campos e adicione ao menos uma passagem válida.', 'error');
+            showNotification('Por favor, preencha todos os campos corretamente.', 'error');
         }
     });
+    
 
     document.getElementById('verPassagensBtn').addEventListener('click', function() {
         window.location.href = 'passagens.html';
